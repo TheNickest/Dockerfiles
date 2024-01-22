@@ -12,7 +12,7 @@ RUN curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&ver
     chmod +x /usr/local/bin/cf
 
 # Final build stage
-FROM arm64v8/node:16-buster-slim
+FROM arm64v8/node:18-buster-slim
 
 COPY --from=foundry /usr/local/bin/cf /usr/local/bin/cf
 
@@ -22,8 +22,10 @@ RUN apt-get update
 RUN apt-get install -y sqlite3
 RUN apt-get install -y git 
 
-# Install global node modules for SAP CAP and frontend development
-RUN npm install -g @ui5/cli @sap/cds-dk yo mbt
+# Install global node modules for SAP CAP and frontend development: mbt
+RUN npm install -g @ui5/cli @sap/cds-dk yo
 
+EXPOSE 4004
+EXPOSE 5000
 EXPOSE 8080
 EXPOSE 8081
