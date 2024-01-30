@@ -8,7 +8,7 @@ RUN apt-get update && \
 
 # Install the Cloud Foundry CLI
 RUN curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&version=v8" | tar -zx && \
-    mv cf7 /usr/local/bin/cf && \
+    mv cf8 /usr/local/bin/cf && \
     chmod +x /usr/local/bin/cf
 
 # Final build stage
