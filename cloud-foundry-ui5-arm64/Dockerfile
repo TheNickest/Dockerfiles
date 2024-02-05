@@ -12,7 +12,7 @@ RUN curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&ver
     chmod +x /usr/local/bin/cf
 
 # Final build stage
-FROM arm64v8/node:20-buster-slim
+FROM arm64v8/node:20.11.0-buster-slim
 
 COPY --from=foundry /usr/local/bin/cf /usr/local/bin/cf
 
