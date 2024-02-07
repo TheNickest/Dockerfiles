@@ -30,8 +30,7 @@ RUN apt-get install -y sqlite3 git adduser
 
 # Install global node modules for SAP CAP and frontend development: mbt
 RUN npm install -g --silent @ui5/cli @sap/cds-dk yo npm@latest \
-    generator-easy-ui5 \
-    generator-saphanaacademy-cap
+    generator-easy-ui5 @sap/generator-cap-project @sap/generator-fiori
 
 # Add a separate user than root to work with
 RUN adduser yeoman
