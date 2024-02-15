@@ -36,12 +36,11 @@ RUN npm install -g --silent @ui5/cli @sap/cds-dk yo npm@latest \
 RUN adduser yeoman
 RUN echo "yeoman ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 ENV HOME /home/yeoman
-RUN mkdir /projects && chown yeoman:yeoman /projects
+RUN mkdir /home/yeoman/projects && chown yeoman:yeoman /home/yeoman/projects
 
 USER yeoman
-WORKDIR /projects
+WORKDIR /home/yeoman/projects
 
 EXPOSE 4004
 EXPOSE 5000
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 5005
