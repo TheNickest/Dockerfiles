@@ -12,3 +12,4 @@
 - CAP app ports exposed
 - base image with cf and mbt
 - final image with npm packages
+- add typescript globally
