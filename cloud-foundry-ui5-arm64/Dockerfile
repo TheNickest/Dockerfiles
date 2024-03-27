@@ -28,7 +28,7 @@ RUN apt-get update
 RUN apt-get install -y sqlite3 git adduser
 #RUN apt-get install -y git 
 
-# Install global node modules for SAP CAP and frontend development: mbt
+# Install global node modules for SAP CAP and frontend development
 RUN npm install -g --silent @ui5/cli @sap/cds-dk yo npm@latest \
     generator-easy-ui5 @sap/generator-cap-project @sap/generator-fiori typescript
 
@@ -44,3 +44,4 @@ WORKDIR /home/yeoman/projects
 EXPOSE 4004
 EXPOSE 5000
 EXPOSE 5005
+EXPOSE 8080
