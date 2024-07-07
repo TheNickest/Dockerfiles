@@ -1,13 +1,14 @@
 # base image
-FROM --platform=linux/arm64/v8 node:20.10-buster-slim
+FROM --platform=linux/arm64/v8 node:20.15-buster-slim
 
 # Update local package index and run installs
-RUN apt-get update
+RUN apt-get update && apt-get upgrade
 
 RUN apt-get install -y git adduser
 
 # Install global node modules
-RUN npm install --global --silent npm@latest @ui5/cli yo generator-easy-ui5 typescript
+RUN npm install -g --silent npm@latest \
+    yo typescript @sap/generator-cap-project @sap/cds-dk
 
 # Add Yeoman User
 RUN adduser yeoman
@@ -16,15 +17,16 @@ RUN echo "yeoman ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 # Yeoman needs the use of a home directory for caching and certain config storage.
 ENV HOME /home/yeoman
 
-RUN mkdir /ui5-projects && chown yeoman:yeoman /ui5-projects
+RUN mkdir /projects && chown yeoman:yeoman /projects
 
 # Always run as the yeoman user
 USER yeoman
-WORKDIR /ui5-projects
+WORKDIR /projects
 
 # Ports
 EXPOSE 8080
 EXPOSE 3000
+EXPOSE 4004
 EXPOSE 8000
 EXPOSE 5173
 
