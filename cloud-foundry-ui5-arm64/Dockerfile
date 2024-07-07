@@ -17,7 +17,7 @@ RUN tar -xvzf cloud-mta-build-tool_1.2.27_Linux_arm64.tar.gz && \
     chmod +x /usr/local/bin/mbt
 
 # Final build stage
-FROM --platform=linux/arm64/v8 node:18.18.0-buster-slim
+FROM --platform=linux/arm64/v8 node:20.15.0-buster-slim
 
 COPY --from=foundry /usr/local/bin/cf /usr/local/bin/cf
 COPY --from=foundry /usr/local/bin/mbt /usr/local/bin/mbt
@@ -25,12 +25,12 @@ COPY --from=foundry /usr/local/bin/mbt /usr/local/bin/mbt
 # Update local package index and run installs
 RUN apt-get update
 
-RUN apt-get install -y sqlite3 git adduser
+RUN apt-get install -y sqlite3 git adduser python3
 #RUN apt-get install -y git 
 
 # Install global node modules for SAP CAP and frontend development
 RUN npm install -g --silent @ui5/cli @sap/cds-dk yo npm@latest \
-    generator-easy-ui5 @sap/generator-cap-project @sap/generator-fiori typescript
+    generator-easy-ui5 @sap/generator-cap-project @sap/generator-fiori typescript ts-node
 
 # Add a separate user than root to work with
 RUN adduser yeoman
