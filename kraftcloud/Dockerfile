@@ -32,6 +32,8 @@ RUN npm install -g --silent @ui5/cli @sap/cds-dk yo npm@latest \
 RUN adduser yeoman
 RUN echo "yeoman ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 ENV HOME /home/yeoman
+ENV KRAFTCLOUD_TOKEN=cm9ib3QkbmJ1c2NoLnVzZXJzLmtyYWZ0Y2xvdWQ6RVRJeE15M2VSOVFjSVMxTEJ6MkFkaFJnRFV1U1BCTTM=
+ENV KRAFTCLOUD_METRO=fra0
 RUN mkdir /home/yeoman/projects && chown yeoman:yeoman /home/yeoman/projects
 
 USER yeoman
